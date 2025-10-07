@@ -8,7 +8,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("name")) {
-    return "Rohan";
+    return "Joon";
   }
 
   if (query.toLowerCase().includes("what is your andrew id?")) {
@@ -25,5 +25,11 @@ export default function QueryProcessor(query: string): string {
     return (num1 + num2).toString();
   }
 
+  const largestMatch = query.match(/which of the following numbers is the largest[:\s]+([0-9, ]+)/i);
+  if (largestMatch) {
+    const numbers = largestMatch[1].split(',').map(num => parseInt(num.trim()));
+    const largest = Math.max(...numbers);
+    return largest.toString();
+  } 
   return "";
 }
